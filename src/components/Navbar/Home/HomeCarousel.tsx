@@ -12,11 +12,12 @@ function HomeCarousel({ carouselMovies }: HomeCarouselProps) {
           <div className="relative">
             {/*     <div className="block bg-red-300 aspect-[7/4] " />
              */}{" "}
-            <img
+            <img 
               src={img_path + movie?.backdrop_path}
               alt=""
               className="w-full aspect-[7/4] "
             />
+            <div className={`absolute w-full h-full top-0 left-0 bg-black hover:opacity-10`}></div>
             <div className="absolute bottom-0 h-44 w-full _crouselGradient"></div>
           </div>
           <div className="flex bottom-0 absolute gap-4 px-4 items-end">

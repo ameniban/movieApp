@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import HomeSlider from "../../components/Navbar/Home/HomeSlider"
 import api from "../../api/axiosInstance"
-import { MovieCard } from "../../constant"
+import { MovieCardType } from "../../constant"
 import MovieList from "../../components/Navbar/Home/MovieList"
 
 function Home() {
-  const [movies, setMovies]=useState<MovieCard[]>([])
+  const [movies, setMovies]=useState<MovieCardType[]>([])
 
   const fetTopRated = async ()=>{
     try{

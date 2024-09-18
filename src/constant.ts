@@ -8,7 +8,7 @@ export  interface CarouselMovie {
     vote_count: number;
   }
 
-export interface MovieCard {
+export interface MovieCardType {
   id : number;
   poster_path: string;
   release_date: string;
