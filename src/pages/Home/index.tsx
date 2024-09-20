@@ -12,7 +12,7 @@ function Home() {
   const fetTopRated = async (page: number)=>{
     try{
       const res = await api.get(`/3/movie/top_rated?language=en-US&page=${page}`)
-      setMovies(res.data.results)
+      setMovies(prev => [...prev, ...res.data?.results])
     }
     catch (err ){
       console.log(err)
@@ -20,6 +20,8 @@ function Home() {
   }
   useEffect(()=>{
     fetTopRated(page)
+    console.log("hello")
+
   },[page])
 
   const handleShowMore= ()=>{

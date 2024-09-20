@@ -65,7 +65,7 @@ function HomeSlider() {
               className="carousel-control-prev-icon"
               aria-hidden="true"
             ></span>
-            <span className="visually-hidden">Previous</span>
+            <span>Previous</span>
           </button>
           <button
             className="carousel-control-next"
@@ -77,7 +77,7 @@ function HomeSlider() {
               className="carousel-control-next-icon"
               aria-hidden="true"
             ></span>
-            <span className="visually-hidden">Next</span>
+            <span /*  className="visually-hidden" */>Next</span>
           </button>
         </div>
       </div>
