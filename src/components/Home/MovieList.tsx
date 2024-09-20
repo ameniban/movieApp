@@ -1,4 +1,4 @@
-import { MovieCardType } from "../../../constant";
+import { MovieCardType } from "../../constant";
 import MovieCard from "./movieCard";
 
 interface MovieListProps {
@@ -7,7 +7,7 @@ interface MovieListProps {
 
 function MovieList({ movies }: MovieListProps) {
   return (
-    <div className="my-14">
+    <div className="mt-14">
       <h1 className="font-bold text-3xl text-yellow-500">Top Rated Movies</h1>
       <div className="row row-cols-6">
         {movies.length > 0 &&

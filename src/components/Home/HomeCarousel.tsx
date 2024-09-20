@@ -1,5 +1,5 @@
 import { FaRegThumbsUp } from "react-icons/fa";
-import { CarouselMovie, img_path } from "../../../constant";
+import { CarouselMovie, img_path } from "../../constant";
 interface HomeCarouselProps {
   carouselMovies: CarouselMovie[];
 }
@@ -17,7 +17,7 @@ function HomeCarousel({ carouselMovies }: HomeCarouselProps) {
               alt=""
               className="w-full aspect-[7/4] "
             />
-            <div className={`absolute w-full h-full top-0 left-0 bg-black hover:opacity-10`}></div>
+            <div className={`absolute w-full h-full top-0 left-0 bg-black  opacity-[0.1] hover:opacity-[0.2]`}></div>
             <div className="absolute bottom-0 h-44 w-full _crouselGradient"></div>
           </div>
           <div className="flex bottom-0 absolute gap-4 px-4 items-end">

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react"
-import HomeSlider from "../../components/Navbar/Home/HomeSlider"
+import HomeSlider from "../../components/Home/HomeSlider"
 import api from "../../api/axiosInstance"
 import { MovieCardType } from "../../constant"
-import MovieList from "../../components/Navbar/Home/MovieList"
+import MovieList from "../../components/Home/MovieList"
+import LoadMoreButton from "../../components/Button/LoadMoreButton"
 
 function Home() {
   const [movies, setMovies]=useState<MovieCardType[]>([])
+  const [page, setPage] = useState<number>(1)
 
-  const fetTopRated = async ()=>{
+  const fetTopRated = async (page: number)=>{
     try{
-      const res = await api.get("/3/movie/top_rated?language=en-US&page=1")
+      const res = await api.get(`/3/movie/top_rated?language=en-US&page=${page}`)
       setMovies(res.data.results)
     }
     catch (err ){
@@ -17,13 +19,21 @@ function Home() {
     }
   }
   useEffect(()=>{
-    fetTopRated()
-  },[])
+    fetTopRated(page)
+  },[page])
+
+  const handleShowMore= ()=>{
+    setPage(prev => prev + 1)
+    console.log("hello")
+  }
  
   return (
-    <div className="w-[90%] mx-auto ">
+    <div className="w-[90%] mx-auto mb-20">
     <HomeSlider  />
     <MovieList movies={movies} />
+    <div onClick={() => handleShowMore() }>
+    <LoadMoreButton />
+    </div>
     </div>
   )
 }
