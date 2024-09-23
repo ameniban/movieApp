@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { CarouselMovie } from "../../constant";
+import { CarouselMovie } from "../../utils/constant";
 import api from "../../api/axiosInstance";
 import HomeCarousel from "./HomeCarousel";
 import HomeCarouselList from "./HomeCarouselList";

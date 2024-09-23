@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import HomeSlider from "../../components/Home/HomeSlider"
 import api from "../../api/axiosInstance"
-import { MovieCardType } from "../../constant"
+import { MovieCardType } from "../../utils/constant"
 import MovieList from "../../components/Home/MovieList"
 import LoadMoreButton from "../../components/Button/LoadMoreButton"
 
@@ -20,13 +20,11 @@ function Home() {
   }
   useEffect(()=>{
     fetTopRated(page)
-    console.log("hello")
 
   },[page])
 
   const handleShowMore= ()=>{
     setPage(prev => prev + 1)
-    console.log("hello")
   }
  
   return (

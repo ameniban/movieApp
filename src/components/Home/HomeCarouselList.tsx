@@ -1,5 +1,5 @@
 import { FaRegThumbsUp } from "react-icons/fa";
-import { CarouselMovie, img_path } from "../../constant";
+import { CarouselMovie, img_path } from "../../utils/constant";
 import { useState } from "react";
 
 interface HomeCarouselListProps {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { img_path, MovieCardType } from "../../constant"
+import { img_path, MovieCardType } from "../../utils/constant"
 
 interface MovieCardProps {
     movieData: MovieCardType;
