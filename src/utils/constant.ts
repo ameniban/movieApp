@@ -17,4 +17,22 @@ export interface MovieCardType {
   original_language:string;
 }
 
-export const Categories= ["Now Playing", "Top Rated", "Popular","Upcoming"]
+//export const Categories= ["Now Playing", "Top Rated", "Popular","Upcoming"]
+export interface CategoriesType {
+  name: string,
+  path : string
+}
+export const Categories : CategoriesType [] = [
+  {
+    name : "Now Playing" , path : "now_playing"
+  },
+  {
+    name : "Top Rated" , path : "top_rated"
+  },
+  {
+    name : "Popular" , path : "popular"
+  },
+  {
+    name : "Upcoming" , path : "upcoming"
+  },
+]
