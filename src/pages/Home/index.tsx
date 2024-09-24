@@ -30,7 +30,7 @@ function Home() {
   return (
     <div className="w-[90%] mx-auto mb-20">
     <HomeSlider  />
-    <MovieList movies={movies} />
+    <MovieList movies={movies} title={'Top Rated Movies'} />
     <div onClick={() => handleShowMore() }>
     <LoadMoreButton />
     </div>
