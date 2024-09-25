@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { Categories, MovieCardType } from "../../utils/constant";
 import api from "../../api/axiosInstance";
 import MovieList from "../../components/Home/MovieList";
+import LoadMoreButton from "../../components/Button/LoadMoreButton";
 
 function Movies() {
   const [filter, setfilter] = useState(Categories[0].name);
+  const [page, setPage] = useState<number>(1)
   const [nowplaying, setNowplaying] = useState<MovieCardType[]>([]);
   const [popular, setPopular] = useState<MovieCardType[]>([]);
   const [upcoming, setUpcoming] = useState<MovieCardType[]>([]);
@@ -13,9 +15,14 @@ function Movies() {
   const toggleSelection = (item: string) => {
     setfilter(item);
   };
-  const fecthMovies = async (path: string) => {
+  const handleLoad = ()=>{
+    const currCateg = Categories.filter(item => item.name == filter)
+    if (currCateg){}
+    setPage(prev => prev + 1)
+  }
+  const fecthMovies = async (path: string , page: number) => {
     try {
-      const resp = await api.get(`/3/movie/${path}?language=en-US&page=1`);
+      const resp = await api.get(`/3/movie/${path}?language=en-US&${page}`);
       console.log(resp.data?.results);
       switch (path) {
         case "now_playing":
@@ -41,9 +48,9 @@ function Movies() {
   useEffect(() => {
     const current = Categories.filter((item) => item.name == filter);
 
-    fecthMovies(current[0].path);
+    fecthMovies(current[0].path, page);
     console.log('fi', filter)
-  }, [filter]);
+  }, [filter, page]);
   return (
     <div className="w-[90%] mx-auto mt-4">
       <h1 className="text-3xl font-bold text-yellow-500">Explore Movies</h1>
@@ -75,7 +82,10 @@ function Movies() {
     <MovieList movies={upcoming} />}
        { filter == "Top Rated" && 
     <MovieList movies={topRated} />}
+<div className="mb-5" onClick={() => handleLoad()} >
+    <LoadMoreButton  />
       
+      </div>
     </div>
   );
 }
