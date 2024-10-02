@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { img_path, MovieCardType } from "../../utils/constant"
+import { Link } from "react-router-dom";
 
 interface MovieCardProps {
     movieData: MovieCardType;
@@ -11,6 +12,8 @@ function MovieCard({ movieData }: MovieCardProps) {
     const [hover, setHover] = useState<number | null>(null)
       
   return (
+
+    <Link to={`details/${movieData.id}`}>
     <div className="col"
     onMouseEnter={()=> setHover(movieData.id)}
     onMouseLeave={()=> setHover(null)}
@@ -36,6 +39,7 @@ function MovieCard({ movieData }: MovieCardProps) {
             </div>
 
     </div>
+    </Link>
   )
 }
 

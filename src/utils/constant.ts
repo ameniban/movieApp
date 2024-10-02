@@ -36,3 +36,16 @@ export const Categories : CategoriesType [] = [
     name : "Upcoming" , path : "upcoming"
   },
 ]
+
+export interface MovieDetailType {
+  id: number
+  poster_path: string
+  backdrop_path: string
+  original_title: string
+  release_date: string
+  tagline: string
+  overview: string
+  genres: { name: string }[]
+  vote_average:number
+  original_language: string
+}
