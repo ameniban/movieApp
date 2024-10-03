@@ -1,6 +1,7 @@
 export const img_path = "https://image.tmdb.org/t/p/original"
 
 export  interface CarouselMovie {
+  id: number
     backdrop_path: string;
     poster_path: string;
     title: string;

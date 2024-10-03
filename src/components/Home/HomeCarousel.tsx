@@ -1,5 +1,6 @@
 import { FaRegThumbsUp } from "react-icons/fa";
 import { CarouselMovie, img_path } from "../../utils/constant";
+import { Link } from "react-router-dom";
 interface HomeCarouselProps {
   carouselMovies: CarouselMovie[];
 }
@@ -8,6 +9,7 @@ function HomeCarousel({ carouselMovies }: HomeCarouselProps) {
   return (
     <div className="carousel-inner">
       {carouselMovies?.map((movie, index) => (
+        <Link key={index} to={`/details/${movie.id}`}>
         <div key={index} className={`carousel-item ${index == 0 ? "active" : ""}`}>
           <div className="relative">
             {/*     <div className="block bg-red-300 aspect-[7/4] " />
@@ -40,7 +42,7 @@ function HomeCarousel({ carouselMovies }: HomeCarouselProps) {
             </div>
           </div>
         </div>
-      ))}
+        </Link>))}
     </div>
   );
 }

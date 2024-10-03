@@ -1,6 +1,7 @@
 import { FaRegThumbsUp } from "react-icons/fa";
 import { CarouselMovie, img_path } from "../../utils/constant";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface HomeCarouselListProps {
   next : number[]
@@ -20,6 +21,7 @@ function HomeCarouselList({ next, carouselMovies }: HomeCarouselListProps) {
             onMouseEnter={()=>setHover(ind)}
             onMouseLeave={()=>setHover(null)}
             >
+              <Link to={`/details/${carouselMovies[item].id}`}>
             <img src={img_path + carouselMovies[item]?.poster_path} className='w-[100px]' alt="" />
            <div className="flex flex-col justify-between py-3">
             <div className="leading-5">
@@ -32,9 +34,9 @@ function HomeCarouselList({ next, carouselMovies }: HomeCarouselListProps) {
               <h2>{carouselMovies[item]?.vote_count}</h2>
             </div>
             </div>
-           
-            </div>
-          ))
+            </Link>  
+            </div> 
+             ))  
         }
        
         

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api/axiosInstance";
 import { img_path, MovieDetailType } from "../../utils/constant";
+import Trailer from "../../components/MovieDetails/Trailer";
+import SimilarMovies from "../../components/MovieDetails/SimilarMovies";
 
 function Details() {
   const params = useParams();
@@ -11,8 +13,6 @@ function Details() {
     try {
       const response = await api.get(`/3/movie/${params.id}?language=en-US`);
       setDetails(response?.data);
-      console.log("details", details);
-      console.log("responser", response.data);
     } catch (err) {
       console.log("Fetch Deatils Error", err);
     }
@@ -23,7 +23,7 @@ function Details() {
   }, [params]);
   return (
     <div>
-      {details && (
+      {details && params.id && (
         <div className="relative h-fit w-full">
           <div className="relative">
             <img
@@ -62,6 +62,8 @@ function Details() {
                   </div>
                 </div>
               </div>
+              <Trailer movieId={params.id} />
+              <SimilarMovies movieId={params.id} />
             </div>
           </div>
         </div>

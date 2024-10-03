@@ -13,7 +13,7 @@ function MovieCard({ movieData }: MovieCardProps) {
       
   return (
 
-    <Link to={`details/${movieData.id}`}>
+    <Link to={`/details/${movieData.id}`}>
     <div className="col"
     onMouseEnter={()=> setHover(movieData.id)}
     onMouseLeave={()=> setHover(null)}
