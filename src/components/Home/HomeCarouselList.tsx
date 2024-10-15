@@ -1,7 +1,5 @@
-import { FaRegThumbsUp } from "react-icons/fa";
-import { CarouselMovie, img_path } from "../../utils/constant";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { CarouselMovie } from "../../utils/constant";
+import CarouselMiniCard from "./CarouselMiniCard";
 
 interface HomeCarouselListProps {
   next : number[]
@@ -9,7 +7,6 @@ interface HomeCarouselListProps {
 }
 
 function HomeCarouselList({ next, carouselMovies }: HomeCarouselListProps) {
-  const [hover, setHover] = useState <number | null> (null)
 
   return (
     <div>
@@ -17,25 +14,8 @@ function HomeCarouselList({ next, carouselMovies }: HomeCarouselListProps) {
        
         {
           next.map((item, ind)=>(
-            <div key={ind} className="flex gap-3"
-            onMouseEnter={()=>setHover(ind)}
-            onMouseLeave={()=>setHover(null)}
-            >
-              <Link to={`/details/${carouselMovies[item].id}`}>
-            <img src={img_path + carouselMovies[item]?.poster_path} className='w-[100px]' alt="" />
-           <div className="flex flex-col justify-between py-3">
-            <div className="leading-5">
-              <h1 className={`py-2 ${hover === ind ? "underline scale-[1.02]" : ''}`} >{carouselMovies[item]?.title}</h1>
-              <h1 className="text-md text-zinc-300 line-clamp-3">{carouselMovies[item]?.overview}</h1>
-              </div>
-
-              <div className="flex gap-1 text-zinc-400 align-items-center">
-              <FaRegThumbsUp />
-              <h2>{carouselMovies[item]?.vote_count}</h2>
-            </div>
-            </div>
-            </Link>  
-            </div> 
+            <CarouselMiniCard carouselMovies={carouselMovies} item={item} ind={item} />
+           
              ))  
         }
        
