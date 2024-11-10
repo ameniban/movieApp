@@ -16,7 +16,7 @@ function HomeCarouselList({ next, carouselMovies }: HomeCarouselListProps) {
 
         {
           carouselMovies.length > 0 ? 
-          next.map((item, ind)=>(
+          next.map((item)=>(
             <CarouselMiniCard carouselMovies={carouselMovies} item={item} ind={item} />
            
              ))  
