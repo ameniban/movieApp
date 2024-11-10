@@ -1,6 +1,3 @@
-import React from 'react'
-import { img_path } from '../../utils/constant'
-
 function HomeCarouSkeleton() {
   return (
 

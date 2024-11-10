@@ -1,5 +1,3 @@
-import React from "react";
-
 function CarouselMiniCardSkel() {
   return (
     <div className="col-xl-12 col">

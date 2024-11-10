@@ -15,12 +15,6 @@ function SimilarMovies({ movieId }: { movieId:string}) {
         console.log("Fetch similar movies Error", err);
       }
     };
-    const handleLoadMore = ()=> {
-        fetchSimilar(page+1)
-        setPage(prev => prev+1)
-
-    }
-  
     useEffect(() => {
         fetchSimilar(1);
         setPage(prev => prev+1)

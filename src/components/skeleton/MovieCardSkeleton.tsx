@@ -1,5 +1,3 @@
-import React from 'react'
-
 function MovieCardSkeleton() {
   return (
     <div className="col" >
