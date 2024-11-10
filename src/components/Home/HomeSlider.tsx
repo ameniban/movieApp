@@ -3,6 +3,7 @@ import { CarouselMovie } from "../../utils/constant";
 import api from "../../api/axiosInstance";
 import HomeCarousel from "./HomeCarousel";
 import HomeCarouselList from "./HomeCarouselList";
+import HomeCarouSkeleton from "../skeleton/HomeCarouSkeleton";
 
 function HomeSlider() {
   const [carouselMovies, setCarouselMovies] = useState<CarouselMovie[]>([]);
@@ -52,8 +53,11 @@ function HomeSlider() {
 
   return (
     <div className="row">
-      <div className="relative col-8">
-        <div id="carouselExample" className="carousel slide">
+      
+      <div className="relative col-xl-8">
+    {
+      carouselMovies.length > 0 ?  
+        <div id="carouselExample" className="carousel slide h-full">
           {<HomeCarousel carouselMovies={carouselMovies} />}
           <button
             className="carousel-control-prev"
@@ -80,8 +84,11 @@ function HomeSlider() {
             <span /*  className="visually-hidden" */>Next</span>
           </button>
         </div>
+      : 
+      <HomeCarouSkeleton />
+       }
       </div>
-      <div className="col-4">
+      <div className="col-xl-4 lg:block hidden">
         <HomeCarouselList 
         next={next}
         carouselMovies={carouselMovies} />

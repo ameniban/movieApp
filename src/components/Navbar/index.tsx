@@ -1,11 +1,13 @@
 import { ChangeEvent, useEffect, useState,KeyboardEvent } from "react";
 import { Link } from "react-router-dom";
 import api from "../../api/axiosInstance";
+import { IoClose } from "react-icons/io5";
+import { CarouselMovie } from "../../utils/constant";
 import CarouselMiniCard from "../Home/CarouselMiniCard";
 
 function Navbar() {
   const [search, setSearch] = useState("");
-  const [searchedList, setSearchedList] = useState<MovieCardType>([]);
+  const [searchedList, setSearchedList] = useState<CarouselMovie[]>([]);
   const [showSearch, setShowSearch] = useState(false);
 
 
@@ -41,23 +43,25 @@ if (e.key === "Enter") {
   }, [search]);
   return (
     <nav className="bg-[#121212] py-2">
-      <div className="flex justify-between items-center w-[80%] mx-auto">
-        <div className="flex space-x-16">
+      <div className="flex justify-between items-center lg:w-[80%] w-[90%] mx-auto">
+        <div className="flex item-center lg:space-x-16 sm:space-x-8 scale-x-1">
           <Link to="/">
-            <div className="flex flex-col text-yellow-500">
+            <div className="flex flex-col text-yellow-500 sm:scale-100 scale-[70%]">
               <h1 className="text-[18px] leading-4">ALL ABOUT</h1>
               <h1 className="text-[24px] leading-5 font-semibold">MOVIES</h1>
             </div>
           </Link>
           <Link to="/movies">
-            <button className="text-[18px] text-yellow-500 hover:underline">
+            <button className="sm:text-[18px] text-md text-yellow-500 hover:underline">
               EXPLORE
             </button>
           </Link>
         </div>
-        <div className="">
+        <div className="relative">
           <input
-            className="w-[500px] h-10 bg-black text-[#2c2c2c] text-lg outline-none px-4 placeholder:text-[#646464] rounded-xl"
+            className="md:w-[500px] sm:w-[350px] w-[180px] h-10 bg-black text-[#2c2c2c] 
+            md:text-lg sm:text-md outline-none sm:px-4 px-3
+           placeholder:text-[#646464] rounded-xl"
             type="text"
             placeholder="search ..."
             onChange={handleChange}
@@ -66,11 +70,14 @@ if (e.key === "Enter") {
           />
           {
             showSearch && search.length > 0 && 
-            <div className="absolute z-30 top-2 right-[13rem] text-yellow-500 text-2xl" onClick={()=>toggleShow(false)}>x</div>
+            <div className="absolute z-30 top-2 right-2 text-yellow-500 
+            sm:text-2xl text-xl" onClick={()=>toggleShow(false)}>
+              <IoClose />
+            </div>
           }
-          { showSearch && 
+          { showSearch && search.length > 0 && 
           <div className="relative" onClick={()=>toggleShow(false)}>
-            <div className="absolute z-50 left-0 w-full bg-zinc-800 rounded-xl">
+            <div className="sm:absolute fixed z-50 left-0 sm:max-w-[500px] w-full bg-zinc-800 rounded-xl">
               <div className="py-3 pl-5">
                 <div className="flex flex-col gap-2 h-fit max-h-[380px] overflow-y-auto">
                   {searchedList.length > 0 &&
